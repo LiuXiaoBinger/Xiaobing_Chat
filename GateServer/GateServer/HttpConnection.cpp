@@ -1,7 +1,7 @@
 #include "HttpConnection.h"
 #include"CLogicSystem.h"
-M_HttpConnection::M_HttpConnection(tcp::socket socket)
-    : _socket(std::move(socket)) {
+M_HttpConnection::M_HttpConnection(boost::asio::io_context& m_io_context)
+    : _socket(m_io_context) {
 }
 //
 //``
@@ -86,7 +86,7 @@ void M_HttpConnection::Start()
                 std::cout << "http read err is " << ec.what() << std::endl;
                 return;
             }
-
+			std::cout << "M_HttpConnection::Start线程id" << std::this_thread::get_id() << std::endl;
             //处理读到的数据
             boost::ignore_unused(bytes_transferred);
             self->HandleReq();

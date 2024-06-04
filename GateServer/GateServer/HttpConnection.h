@@ -6,9 +6,11 @@ class M_HttpConnection : public std::
 {
     friend class CLogicSystem;
 public:
-    M_HttpConnection(tcp::socket socket);
+    M_HttpConnection(boost::asio::io_context& m_io_context);
     void Start();
-
+    tcp::socket& getSocket() {
+        return _socket;
+    }
     void PreParseGetParam();
 
 private:

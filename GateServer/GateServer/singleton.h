@@ -37,8 +37,8 @@ protected:
     static std::shared_ptr<T> m_ptr;
 public:
     static std::shared_ptr<T> Get_M_ptr() {
-        std::once_flag flag;
-        std::call_once(flag, []() {
+        static std::once_flag flag;
+        std::call_once(flag, [&]() {
             std::cout << "Get_M_ptr" << std::endl;
             m_ptr = std::shared_ptr<T>(new T);
             });

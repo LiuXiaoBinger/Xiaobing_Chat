@@ -9,6 +9,7 @@ int main()
     m_ConfigDeal gCfgMgr;
 	std::string gate_port_str = gCfgMgr["GateServer"]["Port"];
 	unsigned short gate_port = atoi(gate_port_str.c_str());
+    std::cout  <<"主线程id" << std::this_thread::get_id() << std::endl;
     try {
         unsigned short port = static_cast<unsigned short>(gate_port);
         net::io_context ioc{ 1 };//初始化线程数为1
