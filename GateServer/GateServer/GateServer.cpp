@@ -6,7 +6,7 @@
 #include "m_ConfigDeal.h"
 int main()
 {
-    m_ConfigDeal gCfgMgr;
+    auto& gCfgMgr = m_ConfigDeal::Inst();
 	std::string gate_port_str = gCfgMgr["GateServer"]["Port"];
 	unsigned short gate_port = atoi(gate_port_str.c_str());
     std::cout  <<"主线程id" << std::this_thread::get_id() << std::endl;

@@ -11,8 +11,9 @@
 #include <json/json.h>
 #include <json/value.h>
 #include <json/reader.h>
-class m_ConfigDeal;
-extern m_ConfigDeal gCfgMgr;
+#include <queue>
+#include <atomic>
+
 enum ErrorCodes {
 	Success = 0,
 	Error_Json = 1001,  //Json½âÎö´íÎó

@@ -18,6 +18,7 @@ struct CSectionInfo {
 		}
 
 		this->_section_datas = src._section_datas;
+		return *this;
 	}
 
 	std::map<std::string, std::string> _section_datas;
@@ -43,7 +44,10 @@ public:
 		return _config_map[section];
 	}
 
-
+	static m_ConfigDeal& Inst() {
+		static m_ConfigDeal cfg_mgr;
+		return cfg_mgr;
+	}
 	m_ConfigDeal& operator=(const m_ConfigDeal& src) {
 		if (&src == this) {
 			return *this;
