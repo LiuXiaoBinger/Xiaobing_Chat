@@ -54,6 +54,9 @@
     <ClCompile Include="AsioIOServicePool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CRedisMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="m_httpServer.h">
@@ -84,6 +87,9 @@
       <Filter>头文件\config_Deal</Filter>
     </ClInclude>
     <ClInclude Include="AsioIOServicePool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CRedisMgr.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

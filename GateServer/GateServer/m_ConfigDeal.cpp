@@ -35,9 +35,9 @@ m_ConfigDeal::m_ConfigDeal() {
 	for (const auto& section_entry : _config_map) {
 		const std::string& section_name = section_entry.first;
 		CSectionInfo section_config = section_entry.second;
-		std::cout << "[" << section_name << "]" << std::endl;
+		//std::cout << "[" << section_name << "]" << std::endl;
 		for (const auto& key_value_pair : section_config._section_datas) {
-			std::cout << key_value_pair.first << "=" << key_value_pair.second << std::endl;
+			//std::cout << key_value_pair.first << "=" << key_value_pair.second << std::endl;
 		}
 	}
 

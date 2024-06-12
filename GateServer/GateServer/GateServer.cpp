@@ -5,7 +5,7 @@
 #include "m_httpServer.h"
 #include "m_ConfigDeal.h"
 
-#include "hiredis.h"
+#include "CRedisMgr.h"
 void TestRedis() {
 	//连接redis 需要启动才可以进行连接
 //redis默认监听端口为6387 可以再配置文件中修改
@@ -94,11 +94,33 @@ void TestRedis() {
 
 	//释放连接资源
 	redisFree(c);
-
+}
+void TestRedisMgr() {
+	assert(CRedisMgr::Get_M_ptr()->Connect("127.0.0.1", 6380));
+	assert(CRedisMgr::Get_M_ptr()->Auth("123456"));
+	assert(CRedisMgr::Get_M_ptr()->Set("blogwebsite", "llfc.club"));
+	std::string value = "";
+	assert(CRedisMgr::Get_M_ptr()->Get("blogwebsite", value));
+	assert(CRedisMgr::Get_M_ptr()->Get("nonekey", value) == false);
+	assert(CRedisMgr::Get_M_ptr()->HSet("bloginfo", "blogwebsite", "llfc.club"));
+	assert(CRedisMgr::Get_M_ptr()->HGet("bloginfo", "blogwebsite") != "");
+	assert(CRedisMgr::Get_M_ptr()->ExistsKey("bloginfo"));
+	assert(CRedisMgr::Get_M_ptr()->Del("bloginfo"));
+	assert(CRedisMgr::Get_M_ptr()->Del("bloginfo"));
+	assert(CRedisMgr::Get_M_ptr()->ExistsKey("bloginfo") == false);
+	assert(CRedisMgr::Get_M_ptr()->LPush("lpushkey1", "lpushvalue1"));
+	assert(CRedisMgr::Get_M_ptr()->LPush("lpushkey1", "lpushvalue2"));
+	assert(CRedisMgr::Get_M_ptr()->LPush("lpushkey1", "lpushvalue3"));
+	assert(CRedisMgr::Get_M_ptr()->RPop("lpushkey1", value));
+	assert(CRedisMgr::Get_M_ptr()->RPop("lpushkey1", value));
+	assert(CRedisMgr::Get_M_ptr()->LPop("lpushkey1", value));
+	assert(CRedisMgr::Get_M_ptr()->LPop("lpushkey2", value) == false);
+	CRedisMgr::Get_M_ptr()->Close();
 }
 int main()
 {
-	TestRedis();
+	//TestRedis();
+	TestRedisMgr();
     auto& gCfgMgr = m_ConfigDeal::Inst();
 	std::string gate_port_str = gCfgMgr["GateServer"]["Port"];
 	unsigned short gate_port = atoi(gate_port_str.c_str());
