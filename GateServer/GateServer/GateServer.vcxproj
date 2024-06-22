@@ -122,6 +122,10 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)config.ini  $(SolutionDir)$(Platform)\$(Configuration)\   /y
+xcopy $(ProjectDir)*.dll   $(SolutionDir)$(Platform)\$(Configuration)\   /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -142,24 +146,30 @@
   <ItemGroup>
     <ClCompile Include="AsioIOServicePool.cpp" />
     <ClCompile Include="CLogicSystem.cpp" />
+    <ClCompile Include="CMysqlMgr.cpp" />
+    <ClCompile Include="CRedisConPool.cpp" />
     <ClCompile Include="CRedisMgr.cpp" />
     <ClCompile Include="CVerifyGrpcClient.cpp" />
     <ClCompile Include="GateServer.cpp" />
     <ClCompile Include="HttpConnection.cpp" />
     <ClCompile Include="message.grpc.pb.cc" />
     <ClCompile Include="message.pb.cc" />
+    <ClCompile Include="MySqlPool.cpp" />
     <ClCompile Include="m_ConfigDeal.cpp" />
     <ClCompile Include="m_httpServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsioIOServicePool.h" />
     <ClInclude Include="CLogicSystem.h" />
+    <ClInclude Include="CMysqlMgr.h" />
     <ClInclude Include="const.h" />
+    <ClInclude Include="CRedisConPool.h" />
     <ClInclude Include="CRedisMgr.h" />
     <ClInclude Include="CVerifyGrpcClient.h" />
     <ClInclude Include="HttpConnection.h" />
     <ClInclude Include="message.grpc.pb.h" />
     <ClInclude Include="message.pb.h" />
+    <ClInclude Include="MySqlPool.h" />
     <ClInclude Include="m_ConfigDeal.h" />
     <ClInclude Include="m_httpServer.h" />
     <ClInclude Include="singleton.h" />

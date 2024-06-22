@@ -18,6 +18,8 @@ public slots:
     //切换登录注册界面
     void ConverttoregistrationSlots();
 
+    void SlotSwitchReg();
+    void SlotSwitchLogin();
 private:
     void initUi();
 private:

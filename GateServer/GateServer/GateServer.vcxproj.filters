@@ -57,6 +57,15 @@
     <ClCompile Include="CRedisMgr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CRedisConPool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MySqlPool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMysqlMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="m_httpServer.h">
@@ -90,6 +99,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CRedisMgr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CRedisConPool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MySqlPool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CMysqlMgr.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

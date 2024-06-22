@@ -80,7 +80,7 @@ void M_HttpConnection::Start()
 {
     auto self = shared_from_this();
 
-    http::async_read(_socket, _buffer, my_request, [self](beast::error_code ec, std::size_t bytes_transferred) {
+	beast::http::async_read(_socket, _buffer, my_request, [self](beast::error_code ec, std::size_t bytes_transferred) {
         try {
             if (ec) {
                 std::cout << "http read err is " << ec.what() << std::endl;

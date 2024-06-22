@@ -19,6 +19,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    clickedlabel.cpp \
+    ctimerbtn.cpp \
     global.cpp \
     httpcontroller.cpp \
     logindialog.cpp \
@@ -27,6 +29,8 @@ SOURCES += \
     xiaobing_chat_client.cpp
 
 HEADERS += \
+    clickedlabel.h \
+    ctimerbtn.h \
     globa.h \
     httpcontroller.h \
     logindialog.h \

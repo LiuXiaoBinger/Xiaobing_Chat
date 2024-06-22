@@ -96,8 +96,8 @@ void TestRedis() {
 	redisFree(c);
 }
 void TestRedisMgr() {
-	assert(CRedisMgr::Get_M_ptr()->Connect("127.0.0.1", 6380));
-	assert(CRedisMgr::Get_M_ptr()->Auth("123456"));
+	//assert(CRedisMgr::Get_M_ptr()->Connect("127.0.0.1", 6380));
+	//assert(CRedisMgr::Get_M_ptr()->Auth("123456"));
 	assert(CRedisMgr::Get_M_ptr()->Set("blogwebsite", "llfc.club"));
 	std::string value = "";
 	assert(CRedisMgr::Get_M_ptr()->Get("blogwebsite", value));
@@ -115,12 +115,12 @@ void TestRedisMgr() {
 	assert(CRedisMgr::Get_M_ptr()->RPop("lpushkey1", value));
 	assert(CRedisMgr::Get_M_ptr()->LPop("lpushkey1", value));
 	assert(CRedisMgr::Get_M_ptr()->LPop("lpushkey2", value) == false);
-	CRedisMgr::Get_M_ptr()->Close();
+	//CRedisMgr::Get_M_ptr()->Close();
 }
 int main()
 {
 	//TestRedis();
-	TestRedisMgr();
+	//TestRedisMgr();
     auto& gCfgMgr = m_ConfigDeal::Inst();
 	std::string gate_port_str = gCfgMgr["GateServer"]["Port"];
 	unsigned short gate_port = atoi(gate_port_str.c_str());

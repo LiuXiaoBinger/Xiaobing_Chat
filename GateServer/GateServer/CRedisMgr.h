@@ -2,13 +2,15 @@
 #include "singleton.h"
 #include "const.h"
 #include "hiredis.h"
+
+#include "CRedisConPool.h"
 class CRedisMgr : public Singleton<CRedisMgr>,
 	public std::enable_shared_from_this<CRedisMgr>
 {
 	friend class Singleton<CRedisMgr>;
 public:
 	~CRedisMgr();
-	bool Connect(const std::string& host, int port);
+	//bool Connect(const std::string& host, int port);
 	bool Get(const std::string& key, std::string& value);
 	bool Set(const std::string& key, const std::string& value);
 	bool Auth(const std::string& password);
@@ -23,11 +25,8 @@ public:
 	bool ExistsKey(const std::string& key);
 	void Close();
 private:
-	CRedisMgr() {
-
-	}
-
-	redisContext* _connect;
-	redisReply* _reply;
+	CRedisMgr();
+	std::unique_ptr<CRedisConPool> _con_pool;
+	
 };
 
