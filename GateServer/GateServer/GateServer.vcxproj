@@ -157,6 +157,7 @@ xcopy $(ProjectDir)*.dll   $(SolutionDir)$(Platform)\$(Configuration)\   /y</Com
     <ClCompile Include="MySqlPool.cpp" />
     <ClCompile Include="m_ConfigDeal.cpp" />
     <ClCompile Include="m_httpServer.cpp" />
+    <ClCompile Include="StatusGrpcClient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsioIOServicePool.h" />
@@ -173,6 +174,7 @@ xcopy $(ProjectDir)*.dll   $(SolutionDir)$(Platform)\$(Configuration)\   /y</Com
     <ClInclude Include="m_ConfigDeal.h" />
     <ClInclude Include="m_httpServer.h" />
     <ClInclude Include="singleton.h" />
+    <ClInclude Include="StatusGrpcClient.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config.ini" />

@@ -26,6 +26,8 @@ SOURCES += \
     logindialog.cpp \
     main.cpp \
     register_dialog.cpp \
+    resetdialog.cpp \
+    tcpmgr.cpp \
     xiaobing_chat_client.cpp
 
 HEADERS += \
@@ -35,12 +37,15 @@ HEADERS += \
     httpcontroller.h \
     logindialog.h \
     register_dialog.h \
+    resetdialog.h \
     singleton.h \
+    tcpmgr.h \
     xiaobing_chat_client.h
 
 FORMS += \
     logindialog.ui \
     register_dialog.ui \
+    resetdialog.ui \
     xiaobing_chat_client.ui
 
 # Default rules for deployment.

@@ -93,9 +93,6 @@ private:
 		std::string port = gCfgMgr["VarifyServer"]["Port"];
 		pool_.reset(new RPConPool(5, host, port));
 	}
-		
-	
-
 	std::unique_ptr<RPConPool> pool_;
 
 };

@@ -12,7 +12,11 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 extern std::function<void(QWidget*)> repolish;
+/**
+ * @brief The ReqId enum 表示请求的id
+ */
 
+extern std::function<QString(QString)> xorString;
 enum ReqId{
     ID_GET_VARIFY_CODE = 1001, //获取验证码
     ID_REG_USER = 1002, //注册用户

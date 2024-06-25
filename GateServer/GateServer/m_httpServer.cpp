@@ -12,6 +12,7 @@ void m_httpServer::Start()
     //主线程一个上下文负责链接socket，其他线程上下文负责读写事件，也就意味着http::async_read函数的调用是在socket绑定的上下文那个线程调度
     auto self = shared_from_this();
     boost::asio::io_context& m_io_context = AsioIOServicePool::Get_M_ptr()->GetIOService();
+    
     std::shared_ptr<M_HttpConnection> ptr=std::make_shared<M_HttpConnection>(m_io_context);
     _acceptor.async_accept(ptr->getSocket(), [self, ptr](beast::error_code ec) {
         try {

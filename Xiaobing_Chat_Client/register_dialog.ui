@@ -519,7 +519,7 @@
   <customwidget>
    <class>CTimerBtn</class>
    <extends>QPushButton</extends>
-   <header>ctimerbtn.h</header>
+   <header location="global">ctimerbtn.h</header>
   </customwidget>
   <customwidget>
    <class>ClickedLabel</class>

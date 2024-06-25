@@ -46,7 +46,7 @@ void register_Dialog::init_handle_Fun()
         showTip(tr("验证码已发送到邮箱，注意查收"), true);
         qDebug()<< "email is " << email ;
     });
-    //注册注册用户回包逻辑
+    //注册用户回包逻辑
     _handle_Fun.insert(ReqId::ID_REG_USER, [this](QJsonObject jsonObj){
         int error = jsonObj["error"].toInt();
         if(error != ErrorCodes::SUCCESS){
@@ -262,6 +262,7 @@ bool register_Dialog::checkUserValid()
 bool register_Dialog::checkPassValid()
 {
     auto pass = ui->m_pass_edit->text();
+    auto confirm = ui->m_confirm_edit->text();
 
     if(pass.length() < 6 || pass.length()>15){
         //提示长度不准确
@@ -282,6 +283,13 @@ bool register_Dialog::checkPassValid()
 
     DelTipErr(TipErr::TIP_PWD_ERR);
 
+    if(pass != confirm){
+        //提示密码不匹配
+        AddTipErr(TipErr::TIP_PWD_CONFIRM, tr("密码和确认密码不匹配"));
+        return false;
+    }else{
+       DelTipErr(TipErr::TIP_PWD_CONFIRM);
+    }
     return true;
 }
 
@@ -338,7 +346,7 @@ void register_Dialog::on_m_sure_btn_clicked()
         QJsonObject json_obj;
         json_obj["user"] = ui->m_user_edit->text();
         json_obj["email"] = ui->m_email_edit->text();
-        json_obj["passwd"] = ui->m_pass_edit->text();
+        json_obj["passwd"] = xorString(ui->m_pass_edit->text());
         json_obj["confirm"] = ui->m_confirm_edit->text();
         json_obj["varifycode"] = ui->m_varify_edit->text();
         httpController::Get_M_ptr()->PostHttpReq(QUrl(gate_url_prefix+"/user_register"),

@@ -46,16 +46,41 @@ void Xiaobing_Chat_Client::initUi()
     //连接登录界面注册信号
        connect(m_Login_dlg, &LoginDialog::Converttoregistration_signals, this, &Xiaobing_Chat_Client::SlotSwitchReg);
 //       //连接登录界面忘记密码信号
-//       connect(m_Login_dlg, &LoginDialog::switchReset, this, &Xiaobing_Chat_Client::SlotSwitchReset);
+       connect(m_Login_dlg, &LoginDialog::switchReset, this, &Xiaobing_Chat_Client::SlotSwitchReset);
 
-    //注册窗口初始化
-    m_Register_dlg=new register_Dialog;
-    m_Register_dlg->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);//让登录窗口镶嵌到主窗口
-    //setCentralWidget(m_Register_dlg);
 
+
+}
+void Xiaobing_Chat_Client::SlotSwitchReset()
+{
+    //创建一个CentralWidget, 并将其设置为MainWindow的中心部件
+    m_reset_dlg = new ResetDialog(this);
+    m_reset_dlg->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+    setCentralWidget(m_reset_dlg);
+
+   m_Login_dlg->hide();
+    m_reset_dlg->show();
+    //注册返回登录信号和槽函数
+    connect(m_reset_dlg, &ResetDialog::switchLogin, this, &Xiaobing_Chat_Client::SlotSwitchLogin2);
+}
+//从重置界面返回登录界面
+void Xiaobing_Chat_Client::SlotSwitchLogin2()
+{
+    //创建一个CentralWidget, 并将其设置为MainWindow的中心部件
+    m_Login_dlg = new LoginDialog(this);
+    m_Login_dlg->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+    setCentralWidget(m_Login_dlg);
+
+   m_reset_dlg->hide();
+    m_Login_dlg->show();
+    //连接登录界面忘记密码信号
+    connect(m_Login_dlg, &LoginDialog::switchReset, this, &Xiaobing_Chat_Client::SlotSwitchReset);
+    //连接登录界面注册信号
+    connect(m_Login_dlg, &LoginDialog::Converttoregistration_signals, this, &Xiaobing_Chat_Client::SlotSwitchReg);
 }
 void Xiaobing_Chat_Client::SlotSwitchReg()
 {
+    //注册窗口初始化
     m_Register_dlg = new register_Dialog(this);
     m_Register_dlg->hide();
 
@@ -83,5 +108,5 @@ void Xiaobing_Chat_Client::SlotSwitchLogin()
     //连接登录界面注册信号
     connect(m_Login_dlg, &LoginDialog::Converttoregistration_signals, this, &Xiaobing_Chat_Client::SlotSwitchReg);
 //    //连接登录界面忘记密码信号
-//    connect(m_Login_dlg, &LoginDialog::switchReset, this, &Xiaobing_Chat_Client::SlotSwitchReset);
+    connect(m_Login_dlg, &LoginDialog::switchReset, this, &Xiaobing_Chat_Client::SlotSwitchReset);
 }

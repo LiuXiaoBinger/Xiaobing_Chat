@@ -3,6 +3,7 @@
 #include "CVerifyGrpcClient.h"
 #include "CRedisMgr.h"
 #include "CMysqlMgr.h"
+#include "StatusGrpcClient.h"
 CLogicSystem::CLogicSystem(){
 	RegGet("/get_test", [](std::shared_ptr<M_HttpConnection> connection) {
 		beast::ostream(connection->_response.body()) << "receive get_test req";
@@ -163,6 +164,56 @@ CLogicSystem::CLogicSystem(){
 		root["user"] = name;
 		root["passwd"] = pwd;
 		root["varifycode"] = src_root["varifycode"].asString();
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+		});
+	//用户登录逻辑
+	RegPost("/user_login", [](std::shared_ptr<M_HttpConnection> connection) {
+		auto body_str = boost::beast::buffers_to_string(connection->my_request.body().data());
+		std::cout << "receive body is " << body_str << std::endl;
+		connection->_response.set(http::field::content_type, "text/json");
+		Json::Value root;
+		Json::Reader reader;
+		Json::Value src_root;
+		bool parse_success = reader.parse(body_str, src_root);
+		if (!parse_success) {
+			std::cout << "Failed to parse JSON data!" << std::endl;
+			root["error"] = ErrorCodes::Error_Json;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		auto name = src_root["email"].asString();
+		auto pwd = src_root["passwd"].asString();
+		UserInfo userInfo;
+		//查询数据库判断用户名和密码是否匹配
+		bool pwd_valid = CMysqlMgr::Get_M_ptr()->CheckPwd(name, pwd, userInfo);
+		if (!pwd_valid) {
+			std::cout << " user pwd not match" << std::endl;
+			root["error"] = ErrorCodes::PasswdInvalid;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		//查询StatusServer找到合适的连接
+		auto reply = StatusGrpcClient::Get_M_ptr()->GetChatServer(userInfo.uid);
+		if (reply.error()) {
+			std::cout << " grpc get chat server failed, error is " << reply.error() << std::endl;
+			root["error"] = ErrorCodes::RPCFailed;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		std::cout << "succeed to load userinfo uid is " << userInfo.uid << std::endl;
+		root["error"] = 0;
+		root["user"] = name;
+		root["uid"] = userInfo.uid;
+		root["token"] = reply.token();
+		root["host"] = reply.host();
 		std::string jsonstr = root.toStyledString();
 		beast::ostream(connection->_response.body()) << jsonstr;
 		return true;
