@@ -18,9 +18,9 @@
 #include <boost/asio.hpp>
 #include "StatusServiceImpl.h"
 void RunServer() {
-	auto & cfg = m_ConfigDeal::Inst();
-	
-	std::string server_address(cfg["StatusServer"]["Host"]+":"+ cfg["StatusServer"]["Port"]);
+	auto& cfg = m_ConfigDeal::Inst();
+
+	std::string server_address(cfg["StatusServer"]["Host"] + ":" + cfg["StatusServer"]["Port"]);
 	StatusServiceImpl service;
 
 	grpc::ServerBuilder builder;

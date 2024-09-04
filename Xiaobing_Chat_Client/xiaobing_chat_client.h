@@ -4,6 +4,7 @@
 #include "logindialog.h"
 #include "register_dialog.h"
 #include"resetdialog.h"
+#include "chatdialog.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Xiaobing_Chat_Client; }
 QT_END_NAMESPACE
@@ -23,6 +24,8 @@ public slots:
     void SlotSwitchLogin();
     void SlotSwitchReset();
     void SlotSwitchLogin2();
+    //跳转聊天
+    void SlotSwitchChat();
 private:
     void initUi();
 private:
@@ -31,5 +34,6 @@ private:
     LoginDialog* m_Login_dlg=nullptr;
     register_Dialog *m_Register_dlg=nullptr;
     ResetDialog *m_reset_dlg =nullptr;
+    ChatDialog *m_Chat_dlg=nullptr;
 };
 #endif // XIAOBING_CHAT_CLIENT_H

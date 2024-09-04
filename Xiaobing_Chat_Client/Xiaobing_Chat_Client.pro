@@ -19,30 +19,70 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ChatView.cpp \
+    MessageTextEdit.cpp \
+    PictureBubble.cpp \
+    TextBubble.cpp \
+    applyfriendpage.cpp \
+    bubbleframe.cpp \
+    chatdialog.cpp \
+    chatitembase.cpp \
+    chatpage.cpp \
+    chatuserlist.cpp \
+    chatuserwid.cpp \
+    clickedbtn.cpp \
     clickedlabel.cpp \
     ctimerbtn.cpp \
+    customizeedit.cpp \
+    friendinfopage.cpp \
     global.cpp \
     httpcontroller.cpp \
+    listitembase.cpp \
+    loadingdlg.cpp \
     logindialog.cpp \
     main.cpp \
     register_dialog.cpp \
     resetdialog.cpp \
     tcpmgr.cpp \
+    usermgr.cpp \
     xiaobing_chat_client.cpp
 
 HEADERS += \
+    ChatView.h \
+    MessageTextEdit.h \
+    PictureBubble.h \
+    TextBubble.h \
+    applyfriendpage.h \
+    bubbleframe.h \
+    chatdialog.h \
+    chatitembase.h \
+    chatpage.h \
+    chatuserlist.h \
+    chatuserwid.h \
+    clickedbtn.h \
     clickedlabel.h \
     ctimerbtn.h \
+    customizeedit.h \
+    friendinfopage.h \
     globa.h \
     httpcontroller.h \
+    listitembase.h \
+    loadingdlg.h \
     logindialog.h \
     register_dialog.h \
     resetdialog.h \
     singleton.h \
     tcpmgr.h \
+    usermgr.h \
     xiaobing_chat_client.h
 
 FORMS += \
+    applyfriendpage.ui \
+    chatdialog.ui \
+    chatpage.ui \
+    chatuserwid.ui \
+    friendinfopage.ui \
+    loadingdlg.ui \
     logindialog.ui \
     register_dialog.ui \
     resetdialog.ui \

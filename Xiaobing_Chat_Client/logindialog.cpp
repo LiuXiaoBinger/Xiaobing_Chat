@@ -142,7 +142,7 @@ bool LoginDialog::enableBtn(bool enabled)
 
 void LoginDialog::initFun_Hand()
 {
-    //注册获取登录回包
+    //注册获取登录回包,链接tcp服务端
     m_Funhands.insert(ReqId::ID_LOGIN_USER,[this](QJsonObject jsonObj){
         int error = jsonObj["error"].toInt();
         if(error != ErrorCodes::SUCCESS){

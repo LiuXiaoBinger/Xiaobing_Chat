@@ -214,6 +214,7 @@ CLogicSystem::CLogicSystem(){
 		root["uid"] = userInfo.uid;
 		root["token"] = reply.token();
 		root["host"] = reply.host();
+		root["port"] = reply.port();
 		std::string jsonstr = root.toStyledString();
 		beast::ostream(connection->_response.body()) << jsonstr;
 		return true;
@@ -240,10 +241,12 @@ bool CLogicSystem::HandlePost(std::string path, std::shared_ptr<M_HttpConnection
 	_post_handlers[path](con);
 	return true;
 }
+
 void CLogicSystem::RegGet(std::string str, handleHttp handler)
 {
 	_get_handlers.insert(make_pair(str,handler));
 }
+
 void CLogicSystem::RegPost(std::string url, handleHttp handler) {
 	_post_handlers.insert(make_pair(url, handler));
 }
