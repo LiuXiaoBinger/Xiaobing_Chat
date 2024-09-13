@@ -357,14 +357,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ClickedBtn</class>
-   <extends>QPushButton</extends>
-   <header>clickedbtn.h</header>
-  </customwidget>
-  <customwidget>
    <class>ClickedLabel</class>
    <extends>QLabel</extends>
    <header>clickedlabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ClickedBtn</class>
+   <extends>QPushButton</extends>
+   <header>clickedbtn.h</header>
   </customwidget>
   <customwidget>
    <class>MessageTextEdit</class>

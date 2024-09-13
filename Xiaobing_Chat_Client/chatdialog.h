@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "globa.h"
+#include "statewidget.h"
+#include "userdata.h"
 namespace Ui {
 class ChatDialog;
 }
@@ -16,11 +18,24 @@ public:
     ~ChatDialog();
 public slots:
     void slot_loading_chat_user();
+
+protected:
+    void AddLBGroup(StateWidget *lb);
+    void ClearLabelState(StateWidget *lb);
+    bool eventFilter(QObject *watched, QEvent *event) override ;
+    void handleGlobalMousePress(QMouseEvent *event) ;
+    void CloseFindDlg();
+    void UpdateChatMsg(std::vector<std::shared_ptr<TextChatData>> msgdata);
+
+protected slots:
+     void slot_side_contact();
+     void slot_side_chat();
+     void slot_text_changed(const QString &str);
 private:
     void addChatUserList();
     Ui::ChatDialog *ui;
     bool _b_loading;
-    //QList<StateWidget*> _lb_list;
+    QList<StateWidget*> _lb_list;
     void ShowSearch(bool bsearch = false);
     ChatUIMode _mode;
     ChatUIMode _state;
