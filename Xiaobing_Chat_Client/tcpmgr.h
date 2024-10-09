@@ -28,13 +28,14 @@ private:
     void connect_signalSLot();
 public slots:
     void slot_tcp_connect(ServerInfo);
-    void slot_send_data(ReqId reqId, QString data);
+    void slot_send_data(ReqId reqId, QByteArray data);
 signals:
     void sig_con_success(bool bsuccess);
-    void sig_send_data(ReqId reqId, QString data);
+    void sig_send_data(ReqId reqId, QByteArray data);
     void sig_swich_chatdlg();
     void sig_load_apply_list(QJsonArray json_array);
     void sig_login_failed(int);
+    //搜寻不到用户（用户不存在）
     void sig_user_search(std::shared_ptr<SearchInfo>);
     void sig_friend_apply(std::shared_ptr<AddFriendApply>);
     void sig_add_auth_friend(std::shared_ptr<AuthInfo>);

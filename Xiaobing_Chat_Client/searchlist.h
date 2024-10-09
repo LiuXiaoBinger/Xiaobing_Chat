@@ -46,7 +46,7 @@ protected:
     }
 private:
     void waitPending(bool pending = true);
-    bool _send_pending;
+    bool _send_pending;//表示处于发送状态
     void addTipItem();
     std::shared_ptr<QDialog> _find_dlg;
     QWidget* _search_edit;

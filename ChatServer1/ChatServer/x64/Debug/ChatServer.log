@@ -1,0 +1,9 @@
+﻿D:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(ChatServer.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  MysqlDao.cpp
+D:\pro\VS_PRO\ChatServer1\ChatServer\MysqlDao.h(54,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  ChatServer.vcxproj -> D:\pro\VS_PRO\ChatServer1\x64\Debug\ChatServer1.exe
+  D:\pro\VS_PRO\ChatServer1\ChatServer\config.ini
+  复制了 1 个文件
+  D:\pro\VS_PRO\ChatServer1\ChatServer\mysqlcppconn-9-vs14.dll
+  D:\pro\VS_PRO\ChatServer1\ChatServer\mysqlcppconn8-2-vs14.dll
+  复制了 2 个文件

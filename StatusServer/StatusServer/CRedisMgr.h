@@ -10,10 +10,8 @@ class CRedisMgr : public Singleton<CRedisMgr>,
 	friend class Singleton<CRedisMgr>;
 public:
 	~CRedisMgr();
-	//bool Connect(const std::string& host, int port);
 	bool Get(const std::string& key, std::string& value);
 	bool Set(const std::string& key, const std::string& value);
-	bool Auth(const std::string& password);
 	bool LPush(const std::string& key, const std::string& value);
 	bool LPop(const std::string& key, std::string& value);
 	bool RPush(const std::string& key, const std::string& value);
@@ -21,12 +19,16 @@ public:
 	bool HSet(const std::string& key, const std::string& hkey, const std::string& value);
 	bool HSet(const char* key, const char* hkey, const char* hvalue, size_t hvaluelen);
 	std::string HGet(const std::string& key, const std::string& hkey);
+	bool HDel(const std::string& key, const std::string& field);
 	bool Del(const std::string& key);
 	bool ExistsKey(const std::string& key);
-	void Close();
+	void Close() {
+		_con_pool->Close();
+		_con_pool->ClearConnections();
+	}
 private:
 	CRedisMgr();
-	std::unique_ptr<CRedisConPool> _con_pool;
+	std::unique_ptr<CRedisConPool>  _con_pool;
 	
 };
 

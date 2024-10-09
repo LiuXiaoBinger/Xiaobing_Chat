@@ -106,7 +106,7 @@ std::vector<std::shared_ptr<FriendInfo>> UserMgr::GetChatListPerPage() {
 
     std::vector<std::shared_ptr<FriendInfo>> friend_list;
     int begin = _chat_loaded;
-    int end = begin + CHAT_COUNT_PER_PAGE;
+    int end = begin + CHAT_COUNT_PER_PAGE;//13
 
     if (begin >= _friend_list.size()) {
         return friend_list;

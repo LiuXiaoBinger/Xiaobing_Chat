@@ -51,7 +51,7 @@ void Xiaobing_Chat_Client::initUi()
 
     //链接创建登录界面
     connect(TcpMgr::Get_M_ptr().get(),&TcpMgr::sig_swich_chatdlg,this,&Xiaobing_Chat_Client::SlotSwitchChat);
-    TcpMgr::Get_M_ptr().get()->sig_swich_chatdlg();
+    //TcpMgr::Get_M_ptr().get()->sig_swich_chatdlg();
 
 }
 void Xiaobing_Chat_Client::SlotSwitchReset()

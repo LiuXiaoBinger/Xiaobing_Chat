@@ -144,6 +144,9 @@
            <height>25</height>
           </size>
          </property>
+         <property name="text">
+          <string>3194811890@qq.com</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -198,6 +201,9 @@
            <width>16777215</width>
            <height>25</height>
           </size>
+         </property>
+         <property name="text">
+          <string>123456</string>
          </property>
         </widget>
        </item>

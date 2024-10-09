@@ -10,7 +10,7 @@ MessageTextEdit::MessageTextEdit(QWidget *parent)
     //this->setStyleSheet("border: none;");
     this->setMaximumHeight(60);
 
-//    connect(this,SIGNAL(textChanged()),this,SLOT(textEditChanged()));
+    //    connect(this,SIGNAL(textChanged()),this,SLOT(textEditChanged()));
 
 }
 
@@ -84,8 +84,15 @@ void MessageTextEdit::keyPressEvent(QKeyEvent *e)
 {
     if((e->key()==Qt::Key_Enter||e->key()==Qt::Key_Return)&& !(e->modifiers() & Qt::ShiftModifier))
     {
-        emit send();
-        return;
+        if (e->key() == Qt::Key_Return && e->modifiers() == Qt::ControlModifier) {
+            // Perform the specific action you want on Ctrl+Enter
+            this->insertPlainText("\n"); // Example: Insert a new line
+        }else
+        {
+            emit send();
+        }
+
+        //return;
     }
     QTextEdit::keyPressEvent(e);
 }
@@ -96,10 +103,10 @@ void MessageTextEdit::insertFileFromUrl(const QStringList &urls)
         return;
 
     foreach (QString url, urls){
-         if(isImage(url))
-             insertImages(url);
-         else
-             insertTextFile(url);
+        if(isImage(url))
+            insertImages(url);
+        else
+            insertTextFile(url);
     }
 }
 
@@ -111,7 +118,7 @@ void MessageTextEdit::insertImages(const QString &url)
     {
         if(image.width()>image.height())
         {
-          image =  image.scaledToWidth(120,Qt::SmoothTransformation);
+            image =  image.scaledToWidth(120,Qt::SmoothTransformation);
         }
         else
             image = image.scaledToHeight(80,Qt::SmoothTransformation);
@@ -159,10 +166,10 @@ void MessageTextEdit::insertFromMimeData(const QMimeData *source)
 
     foreach (QString url, urls)
     {
-         if(isImage(url))
-             insertImages(url);
-         else
-             insertTextFile(url);
+        if(isImage(url))
+            insertImages(url);
+        else
+            insertTextFile(url);
     }
 }
 
@@ -222,7 +229,7 @@ QPixmap MessageTextEdit::getFileIconPixmap(const QString &url)
     pix.fill();
 
     QPainter painter;
-   // painter.setRenderHint(QPainter::Antialiasing, true);
+    // painter.setRenderHint(QPainter::Antialiasing, true);
     //painter.setFont(font);
     painter.begin(&pix);
     // 文件图标

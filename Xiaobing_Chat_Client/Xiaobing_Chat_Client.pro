@@ -24,7 +24,11 @@ SOURCES += \
     PictureBubble.cpp \
     TextBubble.cpp \
     adduseritem.cpp \
+    applyfriend.cpp \
+    applyfrienditem.cpp \
+    applyfriendlist.cpp \
     applyfriendpage.cpp \
+    authenfriend.cpp \
     bubbleframe.cpp \
     chatdialog.cpp \
     chatitembase.cpp \
@@ -33,11 +37,17 @@ SOURCES += \
     chatuserwid.cpp \
     clickedbtn.cpp \
     clickedlabel.cpp \
+    clickedoncelabel.cpp \
+    contactuserlist.cpp \
+    conuseritem.cpp \
     ctimerbtn.cpp \
     customizeedit.cpp \
+    findfaildlg.cpp \
     findsuccessdlg.cpp \
     friendinfopage.cpp \
+    friendlabel.cpp \
     global.cpp \
+    grouptipitem.cpp \
     httpcontroller.cpp \
     listitembase.cpp \
     loadingdlg.cpp \
@@ -58,7 +68,11 @@ HEADERS += \
     PictureBubble.h \
     TextBubble.h \
     adduseritem.h \
+    applyfriend.h \
+    applyfrienditem.h \
+    applyfriendlist.h \
     applyfriendpage.h \
+    authenfriend.h \
     bubbleframe.h \
     chatdialog.h \
     chatitembase.h \
@@ -67,11 +81,17 @@ HEADERS += \
     chatuserwid.h \
     clickedbtn.h \
     clickedlabel.h \
+    clickedoncelabel.h \
+    contactuserlist.h \
+    conuseritem.h \
     ctimerbtn.h \
     customizeedit.h \
+    findfaildlg.h \
     findsuccessdlg.h \
     friendinfopage.h \
+    friendlabel.h \
     globa.h \
+    grouptipitem.h \
     httpcontroller.h \
     listitembase.h \
     loadingdlg.h \
@@ -88,12 +108,19 @@ HEADERS += \
 
 FORMS += \
     adduseritem.ui \
+    applyfriend.ui \
+    applyfrienditem.ui \
     applyfriendpage.ui \
+    authenfriend.ui \
     chatdialog.ui \
     chatpage.ui \
     chatuserwid.ui \
+    conuseritem.ui \
+    findfaildlg.ui \
     findsuccessdlg.ui \
     friendinfopage.ui \
+    friendlabel.ui \
+    grouptipitem.ui \
     loadingdlg.ui \
     logindialog.ui \
     register_dialog.ui \

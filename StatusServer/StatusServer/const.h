@@ -62,3 +62,9 @@ private:
 };
 
 #define CODEPREFIX  "code_"
+
+#define USERIPPREFIX  "uip_"  //获取用户的ip信息
+#define USERTOKENPREFIX  "utoken_"
+#define IPCOUNTPREFIX  "ipcount_" //
+#define USER_BASE_INFO "ubaseinfo_"
+#define LOGIN_COUNT  "logincount"

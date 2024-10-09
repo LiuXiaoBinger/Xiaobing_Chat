@@ -26,12 +26,12 @@ public:
     std::vector<std::shared_ptr<ApplyInfo>> GetApplyList();
     void AddApplyList(std::shared_ptr<ApplyInfo> app);
     bool AlreadyApply(int uid);
-    std::vector<std::shared_ptr<FriendInfo>> GetChatListPerPage();
-    bool IsLoadChatFin();
-    void UpdateChatLoadedCount();
+    std::vector<std::shared_ptr<FriendInfo>> GetChatListPerPage();//聊天界面
+    bool IsLoadChatFin();//判断是否加载完成
+    void UpdateChatLoadedCount();//更新加载多少个数量
     std::vector<std::shared_ptr<FriendInfo>> GetConListPerPage();
     void UpdateContactLoadedCount();
-    bool IsLoadConFin();
+    bool IsLoadConFin();//是否已经加载全部联系人
     bool CheckFriendById(int uid);
     void AddFriend(std::shared_ptr<AuthRsp> auth_rsp);
     void AddFriend(std::shared_ptr<AuthInfo> auth_info);
@@ -49,7 +49,7 @@ private:
     QMap<int, std::shared_ptr<FriendInfo>> _friend_map;
 
     int _chat_loaded;
-    int _contact_loaded;
+    int _contact_loaded;//联系人加载个数
 public slots:
     void SlotAddFriendRsp(std::shared_ptr<AuthRsp> rsp);
     void SlotAddFriendAuth(std::shared_ptr<AuthInfo> auth);

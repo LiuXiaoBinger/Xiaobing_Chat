@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AsioIOServicePool.cpp" />
+    <ClCompile Include="ChatGrpcClient.cpp" />
     <ClCompile Include="CRedisConPool.cpp" />
     <ClCompile Include="CRedisMgr.cpp" />
     <ClCompile Include="message.grpc.pb.cc" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsioIOServicePool.h" />
+    <ClInclude Include="ChatGrpcClient.h" />
     <ClInclude Include="const.h" />
     <ClInclude Include="CRedisConPool.h" />
     <ClInclude Include="CRedisMgr.h" />
